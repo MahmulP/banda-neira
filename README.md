@@ -1,0 +1,2 @@
+# banda-neira
+BAGAI TUAN TELAH BERLALU
