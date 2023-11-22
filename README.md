@@ -1,21 +1,4 @@
-# banda-neira
-Badai Tuan telah berlalu
-Salahkah ku menuntut mesra?
-Tiap pagi menjelang
-Kau di sampingku
-Ku aman ada bersamamu
-Selamanya
-Sampai kita tua
-Sampai jadi debu
-Ku di liang yang satu
-Ku di sebelahmu
-Badai Puan telah berlalu
-Salahkah ku menuntut mesra?
-Tiap taufan menyerang
-Kau di sampingku
-Kau aman ada bersamaku
-Selamanya
-Sampai kita tua
-Sampai jadi debu
-Ku di liang yang satu
-Ku di sebelahmu
+# DONT FORGET THESE THINGS #
+1. Setiap selesai melakukan perubahan pada codingan lokal, jangan lupa untuk melakukan push agar yang lainnya dapat melanjutkan pekerjaan yang sudah kamu buat.
+2. Untuk yang ingin memulai pekerjaan jangan lupa untuk melakukan git pull agar file yang sebelumnya ada di git, ada di dalam folder lokal kamu.
+3. JANGAN MULAI NGODING SEBELUM GIT PULL ATAU NARIK FILE YANG ADA DI GITHUB KE FOLDER LOKAL, NANTI TAKUTNYA WAKTU KAMU NGEPUSH, FILE YANG LAIN MALAH KETIMPA DAN CODINGANNYA ILANG.
