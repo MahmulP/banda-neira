@@ -53,7 +53,7 @@ function App() {
                 }}
               ></div>
               <div className="main-slider-three-building">
-                <img src="assets/images/resources/main-slider-three-building.png" alt="" />
+                <img src="src/assets/images/resources/main-slider-three-building.png" alt="" />
               </div>
               <div className="container">
                 <div className="row">
@@ -112,7 +112,7 @@ function App() {
               <div className="welcome__left">
                 <div>
                   <div className="welcome__img">
-                    <img src="assets/images/resources/cash.jpeg" alt="" style={{ height: '390px' }} />
+                    <img src="src/assets/images/resources/cash.jpeg" alt="" style={{ height: '390px' }} />
                   </div>
                 </div>
               </div>
@@ -123,7 +123,7 @@ function App() {
               <div className="welcome__left">
                 <div>
                   <div className="welcome__img">
-                    <img src="assets/fdesign/9.jpeg" alt="" style={{ height: '390px' }} />
+                    <img src="src/assets/fdesign/9.jpeg" alt="" style={{ height: '390px' }} />
                   </div>
                 </div>
               </div>

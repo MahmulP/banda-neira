@@ -14,13 +14,13 @@ import './assets/vendors/timepicker/timePicker.js';
 function Footer() {
   return (
     <div className="site-footer">
-      <div className="site-footer-bg" style={{ backgroundImage: `url(assets/images/backgrounds/site-footer-bg.jpg)` }}></div>
+      <div className="site-footer-bg" style={{ backgroundImage: `url(src/assets/images/backgrounds/site-footer-bg.jpg)` }}></div>
       <div className="site-footer__middle">
         <div className="container">
           <div className="row">
             <div className="col-md-6 wow fadeInUp animated" data-wow-delay="100ms">
               <div className="footer-widget__column footer-widget__about">
-                <a href="index.html"><img src="assets/images/resources/logo-1.png" alt="" style={{ marginBottom: '50px' }} /></a>
+                <a href="index.html"><img src="src/assets/images/resources/logo-1.png" alt="" style={{ marginBottom: '50px' }} /></a>
                 <div className="footer-widget__about-text-box">
                   <p className="footer-widget__about-text">"Transformasi Sampah Menjadi Kebaikan: Mari Bersama-sama Peduli Lingkungan dan Dapatkan Insentif!"</p>
                 </div>
@@ -35,7 +35,7 @@ function Footer() {
         </div>
       </div>
       <div className="site-footer__bottom">
-        <div className="site-footer-bottom-shape" style={{ backgroundImage: `url(assets/images/shapes/site-footer-bottom-shape.png)` }}></div>
+        <div className="site-footer-bottom-shape" style={{ backgroundImage: `url(src/assets/images/shapes/site-footer-bottom-shape.png)` }}></div>
         <div className="container">
           <div className="row">
             <div className="col-xl-12">

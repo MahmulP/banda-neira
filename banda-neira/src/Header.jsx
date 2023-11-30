@@ -20,7 +20,7 @@ function Header() {
         <nav className="main-menu main-menu-three">
           <div className="main-menu-three__wrapper">
             <div className="main-menu-wrapper__logo">
-              <a href="index.html"><img src="assets/images/resources/logo-1.png" alt="Logo"></img></a>
+              <a href="index.html"><img src="src/assets/images/resources/logo-1.png" alt="Logo"></img></a>
             </div>
             <div className="main-menu-three__main-menu">
               <a href="#" className="mobile-nav__toggler"><i className="fa fa-bars"></i></a>
