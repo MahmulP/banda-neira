@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import backgroundImage from './assets/background.jpg';
-import './index.csss';
+import './index.css';
 import './Responsive.css';
 import './bootstrap.min.css';
 import './assets/vendors/jquery-ui/jquery-ui.css';
