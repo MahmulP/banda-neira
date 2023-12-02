@@ -1,0 +1,62 @@
+
+body {
+  background-image: url('../images/backgrounds/background-login.jpg');
+}
+
+.login-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  margin: 100px auto;
+  padding: 30px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"] {
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+button[type="submit"] {
+  background-color: #0096ff;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #0073e6;
+}
+
+a {
+  color: #0096ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

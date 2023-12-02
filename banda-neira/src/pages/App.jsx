@@ -1,21 +1,14 @@
 import { useState } from 'react';
-import backgroundImage from './assets/background.jpg';
-import './index.css';
-import './Responsive.css';
-import './bootstrap.min.css';
-import './assets/vendors/jquery-ui/jquery-ui.css';
-import './assets/vendors/fontawesome/css/all.min.css';
-import './assets/vendors/wostin-icons/style.css';
-import './assets/vendors/timepicker/timePicker.css';
-import './assets/vendors/jquery/jquery-3.6.0.min.js';
-import './assets/vendors/bootstrap/js/bootstrap.bundle.min.js';
-import './assets/vendors/timepicker/timePicker.js';
+import backgroundImage from '../assets/background.jpg';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
+    <Header></Header>
     <style>
         {`
           a {
@@ -139,6 +132,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }
