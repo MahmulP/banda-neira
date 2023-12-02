@@ -3,6 +3,14 @@ import { useState } from 'react';
 function Header() {
   const [count, setCount] = useState(0);
 
+  const isActive = (path) => {
+    return window.location.pathname == path ? 'active-tab' : '';
+  };
+
+  const current = (path) => {
+    return window.location.pathname == path ? 'current' : '';
+  };
+
   return (
     <>
       <header className="main-header-three">
@@ -14,8 +22,8 @@ function Header() {
             <div className="main-menu-three__main-menu">
               <a href="#" className="mobile-nav__toggler"><i className="fa fa-bars"></i></a>
               <ul className="main-menu__list">
-                <li><a href="/" className="active-tab">Beranda</a></li>
-                <li><a href="service">Layanan Kami</a></li>
+                <li className={current('/')}><a href="/" className={isActive('/')}>Beranda</a></li>
+                <li className={current('/service')}><a href="service" className={isActive('/service')}>Layanan Kami</a></li>
                 <li><a href="about.html">Tentang Kami</a></li>
                 <li><a href="process.html">Cara Kerja</a></li>
                 <li className="nav-item dropdown">

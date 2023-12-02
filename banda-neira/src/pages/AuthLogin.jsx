@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import backgroundLogin from "../assets/images/backgrounds/background-login.jpg";
 
 function AuthLogin() {
-  if (window.location.pathname === "/login") {
+  if (window.location.pathname == "/login") {
     import("../assets/css/login.css");
   }
 
