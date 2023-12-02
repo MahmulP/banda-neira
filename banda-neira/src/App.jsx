@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import backgroundImage from './assets/background.jpg';
-import './App.css';
-import './index.css';
+import './index.csss';
 import './Responsive.css';
 import './bootstrap.min.css';
 import './assets/vendors/jquery-ui/jquery-ui.css';
@@ -48,8 +47,8 @@ function App() {
                 className="main-slider-three-bg"
                 style={{
                   backgroundImage: `url(${backgroundImage})`,
-                  width: '100%', // Adjusted to fill the entire width
-                  height: '100vh', // Adjusted to fill the entire viewport height
+                  width: '100%', 
+                  height: '100vh',
                 }}
               ></div>
               <div className="main-slider-three-building">

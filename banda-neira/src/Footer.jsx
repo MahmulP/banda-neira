@@ -1,5 +1,4 @@
 import {UseState} from 'react';
-import './App.css';
 import './index.css';
 import './Responsive.css';
 import './bootstrap.min.css';
