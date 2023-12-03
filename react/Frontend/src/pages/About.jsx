@@ -1,21 +1,62 @@
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Dhika from "../assets/images/img/dhika.jpeg";
+import "../assets/vendors/bootstrap/css/bootstrap.min.css";
+import "../assets/vendors/animate/animate.min.css";
+import "../assets/vendors/fontawesome/css/all.min.css";
+import "../assets/vendors/wostin-icons/style.css";
+import "../assets/vendors/jquery-ui/jquery-ui.css";
+import "../assets/vendors/timepicker/timePicker.css";
+import "../assets/css/wostin.css";
+import "../assets/css/wostin-responsive.css";
+import 'jquery';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/owl.carousel.min.js';
 
 function About() {
   if (window.location.pathname === "/about") {
     import("../assets/css/service.css");
   }
+  
+  useEffect(() => {
+    $(".thm-owl__carousel").owlCarousel({
+      loop: true,
+      items: 1,
+      autoplay: true,
+      margin: 30,
+      nav: false,
+      dots: true,
+      smartSpeed: 500,
+      autoplayTimeout: 5000,
+      responsive: {
+        0: {
+          items: 1,
+        },
+        768: {
+          items: 2,
+        },
+        992: {
+          items: 3,
+        },
+      },
+    });
+  }, []);
+
   return (
     <>
       <Header></Header>
       <section id="header-about">
-      <h2 className="manage-waste__title" style={{ color: "black", textAlign: "center",
+        <h2
+          className="manage-waste__title"
+          style={{
+            color: "black",
+            textAlign: "center",
             marginTop: "200px",
             marginBottom: "50px",
-            fontWeight: "600", }}>
-                  Tentang Kami
-                </h2>
+            fontWeight: "600",
+          }}>
+          Tentang Kami
+        </h2>
         <p
           className="box-header"
           style={{
@@ -119,31 +160,31 @@ function About() {
           <div
             className="thm-owl__carousel owl-carousel owl-theme owl-with-shadow owl-dots__style-1"
             data-owl-options='{
-            "loop": true,
-            "items": 1,
-            "autoplay": true,
-            "margin": 30,
-            "nav": false,
-            "dots": true,
-            "smartSpeed": 500,
-            "autoplayTimeout": 5000,
-            "responsive": {
-              "0": {
-                "items": 1
-              },
-              "768": {
-                "items": 2
-              },
-              "992": {
-                "items": 3
-              }
-            }
-          }'>
-            <div className="item">
+                    "loop": true,
+                    "items": 1,
+                    "autoplay": true,
+                    "margin": 30,
+                    "nav": false,
+                    "dots": true,
+                    "smartSpeed": 500,
+                    "autoplayTimeout": 5000,
+                    "responsive": {
+                        "0": {
+                            "items": 1
+                        },
+                        "768": {
+                            "items": 2
+                        },
+                        "992": {
+                            "items": 3
+                        }
+                    }
+                }'>
+            <div className="item" style={{width: "350px"}}>
               <div className="industries-one__single">
                 <div className="industries-one__img">
                   <img
-                    src="img/jehan.jpeg"
+                    src="src/assets/images/img/jehan.jpeg"
                     alt=""
                     style={{ height: "350px" }}
                   />
@@ -155,11 +196,11 @@ function About() {
                 </div>
               </div>
             </div>
-            <div className="item">
+            <div className="item" style={{width: "350px"}}>
               <div className="industries-one__single">
                 <div className="industries-one__img">
                   <img
-                    src="src/assets/img/fardan.jpeg"
+                    src="src/assets/images/img/fardan.jpeg"
                     alt=""
                     style={{ height: "350px" }}
                   />
@@ -171,23 +212,7 @@ function About() {
                 </div>
               </div>
             </div>
-            <div className="item">
-              <div className="industries-one__single">
-                <div className="industries-one__img">
-                  <img
-                    src="src/assets/images/img/kartika.jpeg"
-                    alt=""
-                    style={{ height: "350px" }}
-                  />
-                </div>
-                <div className="team-one__content">
-                  <p className="team-one__title">Hipster</p>
-                  <h3 className="team-one__name">Kartika Nur Anggraeni</h3>
-                  <div className="team-one__social-box"></div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
+            <div className="item" style={{width: "350px"}}>
               <div className="industries-one__single">
                 <div className="industries-one__img">
                   <img
@@ -203,7 +228,23 @@ function About() {
                 </div>
               </div>
             </div>
-            <div className="item">
+            <div className="item" style={{width: "350px"}}>
+              <div className="industries-one__single">
+                <div className="industries-one__img">
+                  <img
+                    src="src/assets/images/img/kartika.jpeg"
+                    alt=""
+                    style={{ height: "350px" }}
+                  />
+                </div>
+                <div className="team-one__content">
+                  <p className="team-one__title">Hipster</p>
+                  <h3 className="team-one__name">Kartika Nur Anggraeni</h3>
+                  <div className="team-one__social-box"></div>
+                </div>
+              </div>
+            </div>
+            <div className="item" style={{width: "350px"}}>
               <div className="industries-one__single">
                 <div className="industries-one__img">
                   <img
@@ -219,10 +260,14 @@ function About() {
                 </div>
               </div>
             </div>
-            <div className="item">
+            <div className="item" style={{width: "350px"}}>
               <div className="industries-one__single">
                 <div className="industries-one__img">
-                  <img src={Dhika} alt="" style={{ height: "350px" }} />
+                  <img
+                    src="src/assets/images/img/dhika.jpeg"
+                    alt=""
+                    style={{ height: "350px" }}
+                  />
                 </div>
                 <div className="team-one__content">
                   <p className="team-one__title">Hacker</p>
@@ -231,14 +276,18 @@ function About() {
                 </div>
               </div>
             </div>
-            <div className="item">
+            <div className="item" style={{width: "350px"}}>
               <div className="industries-one__single">
                 <div className="industries-one__img">
-                  <img src="src/assets/images/img/nisa.jpeg" alt="" style={{ height: "350px" }} />
+                  <img
+                    src="src/assets/images/img/nisa.jpeg"
+                    alt=""
+                    style={{ height: "350px" }}
+                  />
                 </div>
                 <div className="team-one__content">
                   <p className="team-one__title">Hacker</p>
-                  <h3 className="team-one__name">Nisa Syifa M</h3>
+                  <h3 className="team-one__name">Nisa Syifa M.</h3>
                   <div className="team-one__social-box"></div>
                 </div>
               </div>

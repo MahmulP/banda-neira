@@ -8,7 +8,7 @@ import "./assets/vendors/jquery-ui/jquery-ui.css";
 import "./assets/vendors/fontawesome/css/all.min.css";
 import "./assets/vendors/wostin-icons/style.css";
 import "./assets/vendors/timepicker/timePicker.css";
-import "./assets/vendors/owl-carousel/owl.carousel.min.css";
+import "./assets/vendors/OwlCarousel/dist/assets/owl.carousel.css";
 import "./assets/vendors/jquery/jquery-3.6.0.min.js";
 import "./assets/vendors/bootstrap/js/bootstrap.bundle.min.js";
 import "./assets/vendors/timepicker/timePicker.js";
@@ -23,6 +23,7 @@ import Information from './pages/Information';
 import TrashSelection from './pages/Trash-selection';
 import Contact from './pages/Contact.jsx';
 import Point from './pages/Point.jsx';
+import ExchangePoint from './pages/ExchangePoint.jsx';
 import { ToastContainer } from 'react-toastify';
 import {
     createBrowserRouter,
@@ -70,6 +71,10 @@ import {
       path: "point",
       element: <Point />,
     },
+    {
+      path: "exchange-point",
+      element: <ExchangePoint />,
+    }
   ]);
 
   const root = ReactDOM.createRoot(document.getElementById('root'));
