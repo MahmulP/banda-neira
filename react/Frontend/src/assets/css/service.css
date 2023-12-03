@@ -1,7 +1,41 @@
-body{
-    background: linear-gradient(to bottom, #DCFFDB, #D9D9D9);
+body {
+  background: linear-gradient(to bottom, #dcffdb, #d9d9d9);
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+ol {
+  color: black;
+}
+
+#img-container {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  top: 50;
+  margin-top: -100px;
+  left: 80%;
+}
+
+.carousel-img {
+    height: 300px; /* Sesuaikan tinggi carousel */
+  }
+
+  .item{
+    width: 30%; /* Mengisi lebar penuh dari container (box) */
+    height: auto;
+  }
+
+  .box{
+    display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 150px;
+  overflow: hidden;
+  padding-top:35px
+
   }

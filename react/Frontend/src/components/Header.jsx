@@ -24,8 +24,8 @@ function Header() {
               <ul className="main-menu__list">
                 <li className={current('/')}><a href="/" className={isActive('/')}>Beranda</a></li>
                 <li className={current('/service')}><a href="service" className={isActive('/service')}>Layanan Kami</a></li>
-                <li classname={current('/about')}><a href="about" className={isActive('/about')}>Tentang Kami</a></li>
-                <li classname={current('/process')}><a href="process" classname={isActive('/process')}>Cara Kerja</a></li>
+                <li className={current('/about')}><a href="about" className={isActive('/about')}>Tentang Kami</a></li>
+                <li className={current('/process')}><a href="process" className={isActive('/process')}>Cara Kerja</a></li>
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Informasi
@@ -35,7 +35,7 @@ function Header() {
                     <li className={current('/trash-selection')}><a className="dropdown-item" href="trash-selection" className={isActive('/trash-selection')}>Pemilihan Sampah</a></li>
                   </ul>
                 </li>
-                <li classname={current('/contact')}><a href="contact" className={isActive('/contact')}>Kontak Kami</a></li>
+                <li className={current('/contact')}><a href="contact" className={isActive('/contact')}>Kontak Kami</a></li>
               </ul>
             </div>
             <div className="main-menu-three__right">
