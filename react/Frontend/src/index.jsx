@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'react-toastify/dist/ReactToastify.css';
 import './assets/css/index.css'
 import './assets/css/Responsive.css'
 import "./bootstrap.min.css";
@@ -22,6 +23,7 @@ import Information from './pages/Information';
 import TrashSelection from './pages/Trash-selection';
 import Contact from './pages/Contact.jsx';
 import Point from './pages/Point.jsx';
+import { ToastContainer } from 'react-toastify';
 import {
     createBrowserRouter,
     RouterProvider,

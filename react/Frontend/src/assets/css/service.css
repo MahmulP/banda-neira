@@ -20,22 +20,21 @@ ol {
 }
 
 .carousel-img {
-    height: 300px; /* Sesuaikan tinggi carousel */
-  }
+  height: 300px; /* Sesuaikan tinggi carousel */
+}
 
-  .item{
-    width: 30%; /* Mengisi lebar penuh dari container (box) */
-    height: auto;
-  }
+.item {
+  width: 30%; /* Mengisi lebar penuh dari container (box) */
+  height: auto;
+}
 
-  .box{
-    display: flex;
+.box {
+  display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
   width: 50px;
   height: 150px;
   overflow: hidden;
-  padding-top:35px
-
-  }
+  padding-top: 35px;
+}
