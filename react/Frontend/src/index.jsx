@@ -25,6 +25,7 @@ import TrashSelection from './pages/Trash-selection';
 import Contact from './pages/Contact.jsx';
 import Point from './pages/Point.jsx';
 import ExchangePoint from './pages/ExchangePoint.jsx';
+import ProtectedRotes from './routes/ProtectedRoutes.jsx
 import { ToastContainer } from 'react-toastify';
 import {
   createBrowserRouter,
@@ -71,7 +72,10 @@ import { AuthProvider } from './AuthContext'; // Import AuthProvider
     },
     {
       path: "point",
-      element: <Point />,
+      element:
+        <ProtectedRoutes>
+        <Point />
+        </ProtectedRoutes>,
     },
     {
       path: "exchange-point",
