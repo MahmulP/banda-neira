@@ -48,10 +48,11 @@ function App() {
                   backgroundImage: `url(${backgroundImage})`,
                   width: '100%', 
                   height: '100vh',
+                  padding: '45rem',
                 }}
               ></div>
               <div className="main-slider-three-building">
-                <img src="src/assets/images/resources/main-slider-three-building.png" alt="" />
+                <img src="src/assets/images/resources/main-slider-three-building.png" alt=""  />
               </div>
               <div className="container">
                 <div className="row">

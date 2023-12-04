@@ -20,6 +20,8 @@ import About from './pages/About';
 import Process from './pages/Process';
 import Information from './pages/Information';
 import TrashSelection from './pages/Trash-selection';
+import Contact from './pages/Contact.jsx';
+import Point from './pages/Point.jsx';
 import {
     createBrowserRouter,
     RouterProvider,
@@ -57,7 +59,15 @@ import {
     {
       path: "trash-selection",
       element: <TrashSelection />,
-    }
+    },
+    {
+      path: "contact",
+      element: <Contact />,
+    },
+    {
+      path: "point",
+      element: <Point />,
+    },
   ]);
 
   const root = ReactDOM.createRoot(document.getElementById('root'));

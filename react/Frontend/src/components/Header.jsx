@@ -24,17 +24,17 @@ function Header() {
               <ul className="main-menu__list">
                 <li className={current('/')}><a href="/" className={isActive('/')}>Beranda</a></li>
                 <li className={current('/service')}><a href="service" className={isActive('/service')}>Layanan Kami</a></li>
-                <li className={current('/about')}><a href="about" className={isActive('/about')}>Tentang Kami</a></li>
                 <li className={current('/process')}><a href="process" className={isActive('/process')}>Cara Kerja</a></li>
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Informasi
                   </a>
                   <ul className="dropdown-menu">
-                    <li className={current('/information')}><a className="dropdown-item" href="information" className={isActive('/information')}>Bank Sampah</a></li>
-                    <li className={current('/trash-selection')}><a className="dropdown-item" href="trash-selection" className={isActive('/trash-selection')}>Pemilihan Sampah</a></li>
+                    <li className={current('/information')}><a href="information" className={isActive('/information')}>Bank Sampah</a></li>
+                    <li className={current('/trash-selection')}><a href="trash-selection" className={isActive('/trash-selection')}>Pemilihan Sampah</a></li>
                   </ul>
-                </li>
+                </li>        
+                <li className={current('/about')}><a href="about" className={isActive('/about')}>Tentang Kami</a></li>
                 <li className={current('/contact')}><a href="contact" className={isActive('/contact')}>Kontak Kami</a></li>
               </ul>
             </div>
@@ -47,7 +47,7 @@ function Header() {
                   <span className="icon-budget"></span>
                 </div>
                 <div className="main-menu-three__call-number">
-                  <h5><a href="point">Point</a></h5>
+                  <h5><a href="point" className={isActive('/point')}>Point</a></h5>
                 </div>
               </div>
             </div>

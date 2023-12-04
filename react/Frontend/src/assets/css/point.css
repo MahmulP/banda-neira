@@ -1,0 +1,39 @@
+body {
+    background: linear-gradient(to bottom, #dcffdb, #d9d9d9);
+  }
+  
+a {
+    text-decoration: none;
+  }
+
+.title {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.get-point {
+    display: flex;
+    background: rgb(249, 249, 249);
+    padding: 2rem;
+    overflow: visible;
+    align-items: center;
+    border-radius: 1rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+    margin-top: 15;
+}
+
+.get-point img{
+    width: 3rem;
+    height: 3rem;
+}
+
+.get-point p{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.collect-point {
+    text-align: end;
+}

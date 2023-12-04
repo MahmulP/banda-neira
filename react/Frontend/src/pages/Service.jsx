@@ -28,7 +28,7 @@ function Service() {
                     Jemput Sampahmu
                   </a>
                   <a
-                    href="contact.html"
+                    href="/contact"
                     className="thm-btn manage-waste__btn-2">
                     Hubungi Kami
                   </a>

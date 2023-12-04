@@ -10,16 +10,12 @@ function About() {
     <>
       <Header></Header>
       <section id="header-about">
-        <h2
-          style={{
-            textAlign: "center",
+      <h2 className="manage-waste__title" style={{ color: "black", textAlign: "center",
             marginTop: "200px",
             marginBottom: "50px",
-            fontWeight: 800,
-            fontFamily: "Arial, Helvetica, sans-serif",
-          }}>
-          Tentang Kami
-        </h2>
+            fontWeight: "600", }}>
+                  Tentang Kami
+                </h2>
         <p
           className="box-header"
           style={{
