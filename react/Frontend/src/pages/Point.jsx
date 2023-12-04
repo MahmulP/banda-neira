@@ -111,6 +111,7 @@ function Point() {
         <div className="button-bingung">
           <a href="process">Bingung gimana cara menukarkan pointnya?</a>
         </div>
+        <div style={{paddingBottom: 10}}>&nbsp;</div>
       </section>
 
       <Footer />
