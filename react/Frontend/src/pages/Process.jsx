@@ -7,7 +7,7 @@ function Process() {
   }
   return (
     <>
-      <Header></Header>
+      <Header/>
 
       <section className="main-slider main-slider-three">
         <div
