@@ -8,9 +8,9 @@ import MaterialBg from "../assets/images/backgrounds/waste-materials-bg.jpg";
 import MaterialShape from "../assets/images/shapes/waste-materials-shape-1.png";
 
 function Service() {
-    if (window.location.pathname === "/service") {
-        import("../assets/css/service.css");
-      }
+  if (window.location.pathname === "/service") {
+    import("../assets/css/service.css");
+  }
   return (
     <>
       <Header></Header>
@@ -24,12 +24,12 @@ function Service() {
                   Lingkungan
                 </h3>
                 <div className="manage-waste__btn-box">
-                  <a href="pickup.html" className="thm-btn manage-waste__btn-1">
+                  <a
+                    href="https://api.whatsapp.com/send?phone=62882015033199&text=Saya%20ingin%20melakukan%20penukaran%20sampah,%20harap%20lakukan%20penjemputan%20ke%20lokasi%20saya%20sekarang.&app_absent=0"
+                    className="thm-btn manage-waste__btn-1" target="_blank">
                     Jemput Sampahmu
                   </a>
-                  <a
-                    href="/contact"
-                    className="thm-btn manage-waste__btn-2">
+                  <a href="/contact" className="thm-btn manage-waste__btn-2">
                     Hubungi Kami
                   </a>
                 </div>
@@ -190,7 +190,7 @@ function Service() {
         </div>
       </section>
 
-      <section className="waste-materials" style={{marginBottom: "200px"}}>
+      <section className="waste-materials" style={{ marginBottom: "200px" }}>
         <div className="container">
           <div className="waste-materials__inner">
             <div
@@ -199,10 +199,7 @@ function Service() {
                 backgroundImage: `url(${MaterialBg})`,
               }}></div>
             <div className="waste-materials-shape-1 float-bob-y">
-              <img
-                src={MaterialShape}
-                alt=""
-              />
+              <img src={MaterialShape} alt="" />
             </div>
             <div className="waste-materials__title-box">
               <h2 className="waste-materials__title">

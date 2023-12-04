@@ -57,19 +57,19 @@ function Footer() {
                 animationName: "fadeInUp",
               }}>
               <div className="footer-widget__column footer-widget__links clearfix">
-                <h3 className="footer-widget__title">Abouts</h3>
+                <h3 className="footer-widget__title">Tentang</h3>
                 <ul className="footer-widget__links-list list-unstyled clearfix">
                   <li>
-                    <a href="about.html">Careers</a>
+                    <a href="/">Beranda</a>
                   </li>
                   <li>
-                    <a href="request-pickup.html">Contact us</a>
+                    <a href="contact">Kontak Kami</a>
                   </li>
                   <li>
-                    <a href="about.html">Privacy Policy</a>
+                    <a href="privacy">Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="services.html">Terms and Condition</a>
+                    <a href="terms-condition">Terms and Condition</a>
                   </li>
                 </ul>
               </div>
@@ -83,19 +83,19 @@ function Footer() {
                 animationName: "fadeInUp",
               }}>
               <div className="footer-widget__column footer-widget__services clearfix">
-                <h3 className="footer-widget__title">Olah Sampah</h3>
+                <h3 className="footer-widget__title">Layanan</h3>
                 <ul className="footer-widget__services-list list-unstyled clearfix">
                   <li>
-                    <a href="dumpster-rental.html">Products</a>
+                    <a href="service">Layanan Kami</a>
                   </li>
                   <li>
-                    <a href="about.html">Partner</a>
+                    <a href="process">Cara Kerja</a>
                   </li>
                   <li>
-                    <a href="about.html">About us</a>
+                    <a href="about">Tentang Kami</a>
                   </li>
                   <li>
-                    <a href="zero-waste.html">Blog</a>
+                    <a href="information">Informasi</a>
                   </li>
                 </ul>
               </div>
