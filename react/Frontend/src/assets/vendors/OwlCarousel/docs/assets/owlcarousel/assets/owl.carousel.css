@@ -17,7 +17,6 @@
     position: relative;
     -ms-touch-action: pan-Y;
     touch-action: manipulation;
-    -moz-backface-visibility: hidden;
     /* fix firefox animation glitch */ }
   .owl-carousel .owl-stage:after {
     content: ".";
@@ -28,22 +27,11 @@
     height: 0; }
   .owl-carousel .owl-stage-outer {
     position: relative;
-    overflow: hidden;
-    /* fix for flashing background */
-    -webkit-transform: translate3d(0px, 0px, 0px); }
-  .owl-carousel .owl-wrapper,
-  .owl-carousel .owl-item {
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0); }
+    overflow: hidden; }
   .owl-carousel .owl-item {
     position: relative;
     min-height: 1px;
     float: left;
-    -webkit-backface-visibility: hidden;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none; }
   .owl-carousel .owl-item img {
@@ -128,11 +116,6 @@
 /*
  * 	Owl Carousel - Lazy Load Plugin
  */
-.owl-carousel .owl-item {
-  /**
-			This is introduced due to a bug in IE11 where lazy loading combined with autoheight plugin causes a wrong
-			calculation of the height of the owl-item that breaks page layouts
-		 */ }
   .owl-carousel .owl-item .owl-lazy {
     opacity: 0;
     transition: opacity 400ms ease; }
@@ -160,7 +143,6 @@
   background: url("owl.video.play.png") no-repeat;
   cursor: pointer;
   z-index: 1;
-  -webkit-backface-visibility: hidden;
   transition: transform 100ms ease; }
 
 .owl-carousel .owl-video-play-icon:hover {
