@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Des 2023 pada 16.25
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.1.17
+-- Generation Time: Dec 04, 2023 at 04:16 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,33 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `contacts`
---
-
-CREATE TABLE `contacts` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `subject` varchar(255) DEFAULT NULL,
-  `message` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `contacts`
---
-
-INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `subject`, `message`) VALUES
-(1, 'test', 'test@gmail.com', '0821571259', 'test bgt', 'test doang ini mah'),
-(2, 'test', 'testtest@gmail.com', '028157219', 'test', 'test bgt ini mah'),
-(3, 'fagasgasga', 'gasgasgasg@gmail.com', '08127512958', 'aflaskfjasf', 'tesat bgatstakstjlastj'),
-(4, 'fasljkfasjflaksjflasfj', 'faskjhgashjgk@gmail.com', '29418512589', 'test', 'testatsaiastkasltj\n'),
-(5, 'Machmul', 'fasklfasjfaflk@gmail.com', '0851275192', 'test ', 'safkjasfkafk\n');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -58,47 +32,40 @@ CREATE TABLE `users` (
   `username` varchar(250) DEFAULT NULL,
   `email` varchar(250) DEFAULT NULL,
   `password` varchar(250) DEFAULT NULL,
-  `phone` varchar(250) DEFAULT NULL
+  `phone` varchar(250) DEFAULT NULL,
+  `points` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `phone`) VALUES
-(1, 'Machmul Pratama', 'mahmulpratama16@gmail.com', 'testdoang', '081361626766');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `phone`, `points`) VALUES
+(1, 'Machmul Pratama', 'mahmulpratama16@gmail.com', 'testdoang', '081361626766', '100'),
+(2, 'mahmulp', 'mahmulpratama16@gmail.com', '$2b$10$eFC5JemHk/qeiPYVhE2dW.kjGrpWgEvm.NisNt8R5JHETrKTs.GG6', '081361626766', NULL),
+(3, 'mahmulp', 'mahmulpratama16@gmail.com', '$2b$10$9pa3StwGL2IXGzpL5HUJoOYztM0cTACU06LeGFkoIHykyN5jtaDfe', '081361626766', NULL),
+(4, 'testdoang', 'mahmulpratama@gmail.com', '$2b$10$4couJYQJKjFnQrmrAfE31eLV9xsqkzheeCv2YW.9xcGIxL/l8mYOC', '081361626766', NULL),
+(5, 'testdoan', 'testdoang@gmail.com', '$2b$10$Rz.WzA5jqn1PSnKFJpOd2uyKyXRzBXcZY0Wj1hB/flaWuu0S//Nxy', '085219519', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `contacts`
---
-ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `contacts`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `contacts`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT untuk tabel `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
