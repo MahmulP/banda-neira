@@ -6,12 +6,6 @@ import './assets/css/Responsive.css'
 import "./bootstrap.min.css";
 import "./assets/vendors/jquery-ui/jquery-ui.css";
 import "./assets/vendors/fontawesome/css/all.min.css";
-import "./assets/vendors/wostin-icons/style.css";
-import "./assets/vendors/timepicker/timePicker.css";
-import "./assets/vendors/OwlCarousel/dist/assets/owl.carousel.css";
-import "./assets/vendors/jquery/jquery-3.6.0.min.js";
-import "./assets/vendors/bootstrap/js/bootstrap.bundle.min.js";
-import "./assets/vendors/timepicker/timePicker.js";
 import "./assets/vendors/owl-carousel/owl.carousel.min.js";
 import App from './pages/App';
 import AuthLogin from './pages/AuthLogin';
@@ -24,6 +18,7 @@ import TrashSelection from './pages/Trash-selection';
 import Contact from './pages/Contact.jsx';
 import Point from './pages/Point.jsx';
 import ExchangePoint from './pages/ExchangePoint.jsx';
+import ProtectedRoutes from './routes/ProtectedRoutes.jsx';
 import { ToastContainer } from 'react-toastify';
 import {
     createBrowserRouter,
@@ -69,7 +64,10 @@ import {
     },
     {
       path: "point",
-      element: <Point />,
+      element:
+      <ProtectedRoutes>
+        <Point />
+      </ProtectedRoutes> ,
     },
     {
       path: "exchange-point",
