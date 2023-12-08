@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import Swal from 'sweetalert2'
 import backgroundLogin from "../assets/images/backgrounds/background-login.jpg";
 
 function AuthLogin() {
@@ -45,13 +46,26 @@ function AuthLogin() {
       localStorage.setItem("token", token);
 
       // Show an alert for successful login
-      alert("Login successful!");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      
+      // alert("Login successful!");
 
       // Redirect the user to the home page
       navigate("/");
     } catch (error) {
-      console.error("Error during login", error.message);
-      alert("Error during login. Please try again.");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Error during login. Please try again!",
+      });
+      // console.error("Error during login", error.message);
+      // alert("Error during login. Please try again.");
     }
   };
 

@@ -26,6 +26,7 @@ import Contact from './pages/Contact.jsx';
 import Point from './pages/Point.jsx';
 import ExchangePoint from './pages/ExchangePoint.jsx';
 import ProtectedRoutes from './routes/ProtectedRoutes.jsx';
+import PublicRoutes from './routes/PublicRoutes.jsx';
 import { ToastContainer } from 'react-toastify';
 import {
   createBrowserRouter,
@@ -36,39 +37,66 @@ import { AuthProvider } from './AuthContext'; // Import AuthProvider
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <App />,
+      element: 
+      <PublicRoutes>
+        <App />
+      </PublicRoutes>,
     },
     {
       path: "login",
-      element: <AuthLogin />,
+      element: 
+      <PublicRoutes>
+        <AuthLogin />
+      </PublicRoutes>,
     },
     {
       path: "register",
-      element: <AuthRegister />,
+      element: 
+      <PublicRoutes>
+        <AuthRegister />
+      </PublicRoutes>,
     },
     {
       path: "service",
-      element: <Service />,
+      element: 
+      <PublicRoutes>
+        <Service />
+      </PublicRoutes>,
     },
     {
       path: "about",
-      element: <About />,
+      element: 
+      <PublicRoutes>
+        <About />
+      </PublicRoutes>,
     },
     {
       path: "process",
-      element: <Process />,
+      element: 
+      <PublicRoutes>
+        <Process />
+      </PublicRoutes>,
     },
     {
       path: "information",
-      element: <Information />,
+      element: 
+      <PublicRoutes>
+        <Information />
+      </PublicRoutes>,
     },
     {
       path: "trash-selection",
-      element: <TrashSelection />,
+      element: 
+      <PublicRoutes>
+        <TrashSelection />
+      </PublicRoutes>,
     },
     {
       path: "contact",
-      element: <Contact />,
+      element: 
+      <PublicRoutes>
+        <Contact />
+      </PublicRoutes>,
     },
     {
       path: "point",

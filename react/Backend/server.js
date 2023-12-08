@@ -8,6 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -15,12 +16,12 @@ const db = mysql.createConnection({
   database: "olsam",
 });
 
-app.get("/", (req, res) => {
+app.get("/", authenticateToken, (req, res) => {
   return res.json("Backend side");
 });
 
 // Registration endpoint
-app.post("/register", async (req, res) => {
+app.post("/register", authenticateToken, async (req, res) => {
   const { username, email, password, phone } = req.body;
 
   if (!username || !email || !password || !phone) {
@@ -90,7 +91,7 @@ app.post("/register", async (req, res) => {
 });
 
 // Login endpoint
-app.post("/login", (req, res) => {
+app.post("/login", authenticateToken, (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -119,14 +120,33 @@ app.post("/login", (req, res) => {
     // Compare hashed password
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
-    if (!isPasswordValid) {
+    if (isPasswordValid) {
+      const payload = {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      }
+      const secret = process.env.SECRET_KEY;
+      const expiresIn = 60 * 60 * 1;
+      const token = jwt.sign(payload, secret, {expiresIn: expiresIn})
+
+
+    } else {
       return res
         .status(401)
         .json({ success: false, message: "Invalid email or password" });
     }
+    
+    // if (!isPasswordValid) {
+    //   return res
+    //     .status(401)
+    //     .json({ success: false, message: "Invalid email or password" });
+    // }
 
+    
+    
     // Hardcoded static token for testing purposes
-    const staticToken = "mahmulp2512";
+    // const staticToken = "mahmulp2512";
 
     return res
       .status(200)
@@ -144,23 +164,26 @@ app.get("/users", authenticateToken, (req, res) => {
 });
 
 function authenticateToken(req, res, next) {
-  const token = req.headers["authorization"];
+  const {authorization} = req.headers;
 
-  const staticToken = "mahmulp2512";
+  // const staticToken = "mahmulp2512";
 
-  if (!token || token !== `Bearer ${staticToken}`) {
+  if (!authorization) {
     return res
       .status(401)
       .json({ success: false, message: "Token not provided or invalid" });
   }
 
-  jwt.verify(staticToken, "your-secret-key", (err, user) => {
-    if (err) {
-      return res.status(403).json({ success: false, message: "Invalid token" });
-    }
-    req.user = user;
+  const token = authorization.split('')[1];
+  const secret = process.env.SECRET_KEY;
+
+  try {
+    const jwtDecode = jwt.verify(token,secret);
+    req.user = jwtDecode
+  } catch (error) {
+    return res.status(403).json({ success: false, message: "Invalid token" });
+  }  
     next();
-  });
 }
 
 app.listen(8080, () => {
