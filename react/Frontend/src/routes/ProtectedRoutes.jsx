@@ -1,19 +1,11 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-type (props) = {
-    isLoggin: boolean
-};
+const ProtectedRoutes = (props) => {
+     const fakeAuth = false;
 
-const ProtectedRoutes = ({isLoggin }) => {
-    return isLoggin ? <Outlet/> : <Navigate to="/login" replace/>;
-};
+     if (!fakeAuth) return <Navigate to="/login"/>;
 
-// const ProtectedRoutes = (props) => {
-//     const fakeAuth = false;
-
-//     if (!fakeAuth) return <Navigate to="/login"/>;
-
-//     return props.children;
-// };
+     return props.children;
+ };
 
 export default ProtectedRoutes;
