@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import toastr from "toastr";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 
@@ -26,9 +27,11 @@ function Register() {
         phone: phone
       });
       navigate('/login');
+      toastr.success('Pendaftaran berhasil dilakukan');
     } catch (error) {
       if(error.response){
-        console.log(error.response.data);
+        console.log(error.response.data.msg);
+        toastr.error(error.response.data.msg);
       }
     }
   };

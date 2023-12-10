@@ -23,7 +23,7 @@ function Footer() {
               <div className="footer-widget__column footer-widget__about">
                 <a href="index.html">
                   <img
-                    src="src/assets/images/resources/logo-1.png"
+                    src="/logo-1.png"
                     alt=""
                     style={{ marginBottom: "50px" }}
                   />

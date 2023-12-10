@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 
@@ -39,7 +40,6 @@ function Login() {
         <h1>OLSAM</h1>
         <h2>Protect our Environment</h2>
         <form className="login-form" onSubmit={handleLogin}>
-          <p className="text-center">{msg}</p>
           <input
             type="text"
             placeholder="Email"

@@ -30,3 +30,24 @@ GET http://localhost:8000/token
 ###
 
 DELETE http://localhost:8000/logout
+
+###
+
+GET http://localhost:8000/vouchers
+
+###
+GET http://localhost:8000/contacts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoibWFobXVscCIsImVtYWlsIjoibWFobXVscHJhdGFtYTFAZ21haWwuY29tIiwiaWF0IjoxNzAyMjE3NDgxLCJleHAiOjE3MDIyMTc1MjZ9.UOhGVB0K8A5g30sPrZbvyDhoy5HPJX-x40uH6rJdnyo
+
+###
+
+POST http://localhost:8000/post-message
+Content-Type: application/json
+
+{
+    "email": "mahmulpratama1@gmail.com",
+    "name": "Machmul Pratama",
+    "phone": "08527159",
+    "subject": "Teruntuk Kamu hidup dan matiku",
+    "message": "Kutuliskan kenagnan tentang caraku menemukan dirimu asik asik jos"
+}

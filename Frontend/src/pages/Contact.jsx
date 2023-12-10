@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import "toastr/build/toastr.css";
+import toastr from "toastr";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
@@ -9,48 +10,38 @@ function Contact() {
     import("../assets/css/service.css");
   }
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/submit-form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      await axios.post("http://localhost:8000/post-message", {
+        name: name,
+        email: email,
+        subject: subject,
+        phone: phone,
+        message: message,
       });
 
-      const result = await response.json();
-      console.log(result);
+      setName("");
+      setEmail("");
+      setSubject("");
+      setPhone("");
+      setMessage("");
 
-      if (result.success) {
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
-
-        alert("Pesan kamu telah kami terima. Kami akan segera menghubungimu.");
-      } else {
-        alert("Gagal mengirimkan formulir, silahkan coba lagi.");
-      }
+      toastr.success(
+        "Pesan Anda berhasil kami terima, Anda akan segera kami hubungi"
+      );
     } catch (error) {
-      console.error("Error submitting form:", error);
+      if (error.response) {
+        console.log(error.response.data.msg);
+        toastr.error(error.response.data.msg);
+      }
     }
   };
 
@@ -293,9 +284,7 @@ function Contact() {
               <div className="col-xl-6 col-lg-6">
                 <div className="contact-one__right">
                   <form
-                    action=""
                     className="contact-one__form contact-form-validated"
-                    noValidate="novalidate"
                     onSubmit={handleSubmit}>
                     <div className="row">
                       <div className="col-xl-12 col-lg-6 col-md-6">
@@ -304,8 +293,8 @@ function Contact() {
                             type="text"
                             placeholder="Nama Lengkap"
                             name="name"
-                            value={formData.name}
-                            onChange={handleChange}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                           />
                         </div>
                       </div>
@@ -315,8 +304,8 @@ function Contact() {
                             type="email"
                             placeholder="Email address"
                             name="email"
-                            value={formData.email}
-                            onChange={handleChange}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                       </div>
@@ -326,8 +315,8 @@ function Contact() {
                             type="text"
                             placeholder="Nomor Ponsel"
                             name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                           />
                         </div>
                       </div>
@@ -337,8 +326,8 @@ function Contact() {
                             type="text"
                             placeholder="Subjek"
                             name="subject"
-                            value={formData.subject}
-                            onChange={handleChange}
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
                           />
                         </div>
                       </div>
@@ -350,8 +339,8 @@ function Contact() {
                             name="message"
                             placeholder="Pesan"
                             defaultValue={""}
-                            value={formData.message}
-                            onChange={handleChange}
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
                           />
                         </div>
                         <div className="contact-one__btn-box">

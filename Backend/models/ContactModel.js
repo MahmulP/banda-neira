@@ -3,27 +3,24 @@ import db from "../config/Database.js";
 
 const { DataTypes} = Sequelize;
 
-const users = db.define('users', {
-    username:{
+const contacts = db.define('contacts', {
+    name:{
         type: DataTypes.STRING,
     },
     email:{
         type: DataTypes.STRING,
     },
-    password:{
-        type: DataTypes.STRING,
-    },
-    phone:{
-        type: DataTypes.STRING,
-    },
-    refresh_token:{
+    subject:{
         type: DataTypes.TEXT,
     },
-    points:{
+    message:{
+        type: DataTypes.TEXT,
+    },
+    phone:{
         type: DataTypes.STRING,
     }
 }, {
     freezeTableName: true,
 });
 
-export default users;
+export default contacts;

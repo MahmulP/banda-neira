@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -5,11 +7,29 @@ function Point() {
   if (window.location.pathname === "/point") {
     import("../assets/css/point.css");
   }
+
+  const [vouchers, setVouchers] = useState([]);
+
+  useEffect(() => {
+    fetchVouchers();
+  }, []);
+
+  const fetchVouchers = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/vouchers");
+
+      setVouchers(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching vouchers:", error);
+    }
+  };
+
   return (
     <>
       <Header />
 
-      <section className="services-one" style={{marginTop: "100px"}}>
+      <section className="services-one" style={{ marginTop: "100px" }}>
         <div className="container">
           <h1 className="industy-details__title">
             <b>Kumpulkan untuk Mendapatkan Voucher!</b>
@@ -51,67 +71,25 @@ function Point() {
         </div>
 
         <div className="container-voc">
-          <div className="voucher-body">
-            <div className="voucher">
-              <h2>VOUCHER DISKON 20%</h2>
-              <p style={{ borderBottom: "1px solid black" }}>
-                Valid until <b>23 June 2024</b>
-              </p>
-              <p>
-                Diskon 20% s/d Rp 5.000 dengan minimal belanja Rp 150.000 di
-                Indomaret
-              </p>
-              <button className="voucher-code">
-                <a href="exchange-point">Tukar 150 point</a>
-              </button>
+          {vouchers.map((voucher) => (
+            <div className="voucher-body">
+              <div className="voucher">
+                <h2>{voucher.jenis_voucher}</h2>
+                <p style={{ borderBottom: "1px solid black" }}>
+                  {voucher.valid_voucher}
+                </p>
+                <p>{voucher.deskripsi_voucher}</p>
+                <button className="voucher-code">
+                  <a href="exchange-point">Tukar {voucher.point_voucher} point</a>
+                </button>
+              </div>
             </div>
-            <div className="voucher">
-              <h2>VOUCHER DISKON 15%</h2>
-              <p style={{ borderBottom: "1px solid black" }}>
-                Valid until <b>23 June 2024</b>
-              </p>
-              <p>
-                Diskon Top Up 15% s/d Rp 10.000 dengan minimal belanja Rp
-                120.000 di Alfamart
-              </p>
-              <button className="voucher-code">
-                <a href="exchange-point">Tukar 75 point</a>
-              </button>
-            </div>
-          </div>
-          <div className="voucher-body">
-            <div className="voucher">
-              <h2>VOUCHER DISKON 50%</h2>
-              <p style={{ borderBottom: "1px solid black" }}>
-                Valid until <b>23 June 2024</b>
-              </p>
-              <p>
-                Diskon 50% s/d Rp 25.000 dengan minimal belanja Rp 50.000 di
-                Shopee
-              </p>
-              <button className="voucher-code">
-                <a href="exchange-point">Tukar 250 point</a>
-              </button>
-            </div>
-            <div className="voucher">
-              <h2>VOUCHER CASHBACK 25%</h2>
-              <p style={{ borderBottom: "1px solid black" }}>
-                Valid until <b>23 June 2024</b>
-              </p>
-              <p>
-                Cashback 25% s/d Rp 50.000 dengan minimal belanja Rp 100.000 di
-                McD
-              </p>
-              <button className="voucher-code">
-                <a href="exchange-point">Tukar 100 point</a>
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="button-bingung">
           <a href="process">Bingung gimana cara menukarkan pointnya?</a>
         </div>
-        <div style={{paddingBottom: 10}}>&nbsp;</div>
+        <div style={{ paddingBottom: 10 }}>&nbsp;</div>
       </section>
 
       <Footer />
