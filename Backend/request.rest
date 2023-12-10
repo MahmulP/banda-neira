@@ -1,0 +1,32 @@
+GET http://localhost:8000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoibWFobXVscCIsImVtYWlsIjoibWFobXVscHJhdGFtYTFAZ21haWwuY29tIiwiaWF0IjoxNzAyMTczNDA2LCJleHAiOjE3MDIxNzM0NTF9.KnzZ54taqSnJoBv2ve5M0sFKbht8uQtKTM_Tb-UjEHo
+
+###
+
+POST http://localhost:8000/register
+Content-Type: application/json
+
+{
+    "username": "mahmulp",
+    "email": "mahmulpratama1@gmail.com",
+    "password": "test",
+    "phone": "081361626766"
+}
+
+###
+
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "email": "mahmulpratama1@gmail.com",
+    "password": "test"
+}
+
+###
+
+GET http://localhost:8000/token
+
+###
+
+DELETE http://localhost:8000/logout
