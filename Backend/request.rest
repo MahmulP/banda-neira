@@ -19,7 +19,7 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-    "email": "mahmulpratama1@gmail.com",
+    "email": "mahmulpratama16@gmail.com",
     "password": "test"
 }
 
@@ -33,7 +33,21 @@ DELETE http://localhost:8000/logout
 
 ###
 
+GET http://localhost:8000/user-point
+
+###
+
 GET http://localhost:8000/vouchers
+
+###
+
+POST http://localhost:8000/exchange-voucher
+Content-Type: application/json
+
+{
+    "voucherId": 3
+}
+
 
 ###
 GET http://localhost:8000/contacts

@@ -94,3 +94,29 @@ export const Logout = async (req, res) => {
   res.clearCookie('refreshToken');
   return res.sendStatus(200);
 };
+
+
+export const getPoint = async (req, res) => {
+  try {
+      const refreshToken = req.cookies.refreshToken;
+      if (!refreshToken) return res.sendStatus(401);
+
+      const users = await Users.findAll({
+          where: {
+              refresh_token: refreshToken
+          }
+      });
+
+      if (!users[0]) return res.sendStatus(404);
+
+      const userPoint = users[0].points;
+
+      if (!userPoint) return res.sendStatus(404);
+
+      res.json({ userPoint });
+  } catch (error) {
+      console.log(error);
+      res.status(500).send('Internal Server Error');
+  }
+};
+

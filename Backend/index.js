@@ -4,6 +4,7 @@ import db from "./config/Database.js";
 import router from "./routes/index.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import voucherExchange from "./models/VoucherExchangeModel.js";
 
 dotenv.config();
 const app = express();
@@ -11,6 +12,7 @@ const app = express();
 try {
   await db.authenticate();
   console.log("Database connected");
+  // await voucherExchange.sync();
 } catch (error) {
   console.error(error);
 }

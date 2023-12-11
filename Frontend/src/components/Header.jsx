@@ -19,7 +19,6 @@ const Header = () => {
       setToken(response.data.accessToken);
       const decoded = jwtDecode(response.data.accessToken);
       setUsername(decoded.username);
-      console.log(decoded);
     } catch (error) {
       if (error.response && error.response.status === 401) {
         console.log("Unauthorized");

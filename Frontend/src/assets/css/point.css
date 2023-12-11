@@ -91,7 +91,7 @@ a {
 
 .voucher-code {
   background-color: white;
-  color: #77de5d;
+  color: #000000;
   padding: 5px 10px;
   border-radius: 50px;
   font-size: 15px;
@@ -100,6 +100,11 @@ a {
   box-shadow: 2px 3px rgb(54, 54, 54);
   border: none;
   cursor: pointer;
+}
+
+.voucher-code:hover {
+  background-color: #77de5d;
+  color: white;
 }
 .button-bingung {
   background-color: #77de5d;
