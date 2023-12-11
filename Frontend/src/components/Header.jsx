@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import toastr from "toastr";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,26 +15,30 @@ const Header = () => {
 
   const refreshToken = async () => {
     try {
-      const storedToken = localStorage.getItem('accessToken');
-      axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
-
       const response = await axios.get("http://localhost:8000/token");
       setToken(response.data.accessToken);
-      const decoded = jose.decodeJwt(response.data.accessToken);
+      const decoded = jwtDecode(response.data.accessToken);
+      setUsername(decoded.username);
       console.log(decoded);
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        // Handle unauthorized error, e.g., redirect to login
-        console.log("Unauthorized, redirect to login");
-        // Optionally redirect to the login page
-        // navigate("/login");
+        console.log("Unauthorized");
       } else {
-        // Handle other errors
         console.log(error);
       }
     }
   };
-  
+
+  const handleLogout = async (req, res, next) => {
+    try {
+      const response = await axios.delete("http://localhost:8000/logout");
+      navigate("/login");
+
+      toastr.success("Successfully logged out");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const isActive = (path) => {
     return window.location.pathname === path ? "active-tab" : "";
@@ -112,9 +118,33 @@ const Header = () => {
             </div>
             <div className="main-menu-three__right">
               <div className="main-menu-three__search-box">
-                <a href="login" className={current("/login")}>
-                  Masuk
-                </a>
+                {username ? (
+                  <div className="dropdown">
+                    <a href=""
+                      className="text-black dropdown-toggle"
+                      id="dropdownMenuLink"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false">
+                      {username}
+                    </a>
+
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink">
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={handleLogout}>
+                        Log Out
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <a href="login" className={current("/login")}>
+                    Masuk
+                  </a>
+                )}
               </div>
               <div className="main-menu-three__call">
                 <div className="main-menu-three__call-icon">

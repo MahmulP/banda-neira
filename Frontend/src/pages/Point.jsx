@@ -9,6 +9,7 @@ function Point() {
   }
 
   const [vouchers, setVouchers] = useState([]);
+  const [point, setPoint] = useState('');
 
   useEffect(() => {
     fetchVouchers();

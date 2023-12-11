@@ -1,6 +1,7 @@
 // Import necessary libraries and components
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
+import axios from 'axios';
 import './assets/css/index.css'
 import './assets/css/Responsive.css'
 import "./bootstrap.min.css";
@@ -13,7 +14,6 @@ import "./assets/vendors/jquery/jquery-3.6.0.min.js";
 import "./assets/vendors/bootstrap/js/bootstrap.bundle.min.js";
 import "./assets/vendors/timepicker/timePicker.js";
 import "./assets/vendors/owl-carousel/owl.carousel.min.js";
-// import "toastr/build/toastr.min.css";
 import App from './pages/App';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -29,7 +29,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import { AuthProvider } from './AuthContext'; // Import AuthProvider
+import { AuthProvider } from './AuthContext';
+axios.defaults.withCredentials = true;
 
   const router = createBrowserRouter([
     {
