@@ -1,39 +1,53 @@
-import {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 function ExchangePoint() {
-  if (window.location.pathname === "/exchange-point") {
+  if (window.location.pathname === "/exchange-status") {
     import("../assets/css/exchangepoint.css");
   }
-  const [loadingText, setLoadingText] = useState("Pointmu lagi diproses ni");
+
+  const [exchanges, setExchanges] = useState([]);
+  const [points, setPoints] = useState(null);
 
   useEffect(() => {
-    const id = document.getElementById("penukaran");
-    const loading = document.createElement("div");
-    loading.textContent = "Pointmu lagi diproses ni";
-    id.appendChild(loading);
-
-    const loaded = setInterval(() => {
-      setLoadingText((prevText) => prevText + ".");
-    }, 1000);
-
-    setTimeout(() => {
-      clearInterval(loaded);
-      setLoadingText("YEAY SELAMAT POINTMU BERHASIL DITUKARKAN");
-    }, 4000);
-
-    return () => {
-      clearInterval(loaded);
-      id.removeChild(loading);
-    };
+    userPoints();
+    fetchExchanges();
   }, []);
+
+  const userPoints = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/user-point");
+      setPoints(response.data.userPoint);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchExchanges = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/user-exchange"
+      );
+      setExchanges(response.data);
+    } catch (error) {
+      console.error("Error fetching vouchers:", error);
+    }
+  };
 
   return (
     <>
       <Header />
 
-      <section className="services-one" style={{marginTop: "100px"}}>
+      <section
+        className="services-one"
+        style={{
+          background:
+            "linear-gradient(357deg, rgba(255,255,255,1) 0%, rgba(220,255,219,1) 100%)",
+          marginTop: "100px",
+        }}>
         <div className="container">
           <h1 className="industy-details__title">
             <b>Kumpulkan untuk Mendapatkan Voucher!</b>
@@ -46,7 +60,6 @@ function ExchangePoint() {
         style={{
           background:
             "linear-gradient(357deg, rgba(255,255,255,1) 0%, rgba(220,255,219,1) 100%)",
-          marginTop: "50px",
         }}>
         <div
           className="presentase"
@@ -65,29 +78,53 @@ function ExchangePoint() {
           <div className="skill">
             <div className="box">
               <div className="skill-bar">
-                <div className="poin">75</div>
+                <div className="poin">{points ?? '0'}</div>
               </div>
             </div>
           </div>
           <p style={{ color: "black", fontSize: "18px" }}>
-            Total Poin Anda : 75 Poin
+            Total Poin Anda : {points ?? '0'} Poin
           </p>
         </div>
-        <div className="image">
-          <img src="src/assets/fdesign/16.png" alt="" />
-        </div>
-        <div
-          id="penukaran"
-          style={{
-            color: "black",
-            fontSize: "25px",
-            fontFamily: "'Times New Roman', Times, serif",
-            textAlign: "center",
-            fontWeight: "bold",
-            marginBottom: "200px",
-            marginTop: "150px",
-          }}>
-          {loadingText}
+        <div className="container mt-6 mb-6">
+          <div className="row">
+            <div className="col-md-10 offset-md-1">
+              <table className="table table-bordered">
+                <thead>
+                  <tr className="text-center">
+                    <th>Jenis Voucher</th>
+                    <th>Status Redeem</th>
+                    <th>Kode Redeem</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {exchanges.length > 0 ? (
+                    exchanges.map((exchange) => (
+                      <tr key={exchange.id}>
+                        <td className="d-none d-xl-table-cell">
+                          {exchange.voucher.jenis_voucher}
+                        </td>
+                        {exchange.status === "1" ? (
+                          <td className="d-none d-md-table-cell">Done</td>
+                        ) : (
+                          <td className="d-none d-md-table-cell">
+                            Being Process
+                          </td>
+                        )}
+                        <td className="d-none d-xl-table-cell">
+                          {exchange.redeem_voucher ?? "Being Process"}
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr className="text-center">
+                      <td colSpan={3}>Tidak ada data penukaran</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </section>
 

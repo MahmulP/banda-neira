@@ -77,7 +77,7 @@ const router = createBrowserRouter([
     element: <Point />,
   },
   {
-    path: "exchange-point",
+    path: "exchange-status",
     element: <ExchangePoint />,
   },
   {

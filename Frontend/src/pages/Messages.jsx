@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 
 function Messages() {
+  const navigate = useNavigate();
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    fetchContacts();
+  }, []);
+
+  const fetchContacts = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/contacts");
+      setMessages(response.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
   return (
     <div className="d-flex">
       <div className="w-auto position-fixed  ">
@@ -33,16 +51,18 @@ function Messages() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Nisa Syifa</td>
-                        <td>nisa@gmail.com</td>
-                        <td>864-348-0485</td>
-                        <td className="d-none d-md-table-cell">Dear OLSAM</td>
-                        <td className="table-action">
-                          Saya ingin berkunjung ke kantor
-                        </td>
-                      </tr>
+                      {messages.map((message) => (
+                        <tr>
+                          <td>{message.id}</td>
+                          <td>{message.name}</td>
+                          <td>{message.email}</td>
+                          <td>{message.phone}</td>
+                          <td className="d-none d-md-table-cell">{message.subject}</td>
+                          <td className="table-action">
+                            {message.message}
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>

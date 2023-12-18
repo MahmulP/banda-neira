@@ -21,6 +21,9 @@ const users = db.define('users', {
     },
     points:{
         type: DataTypes.STRING,
+    },
+    role:{
+        type: DataTypes.STRING,
     }
 }, {
     freezeTableName: true,

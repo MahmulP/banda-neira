@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -9,12 +10,15 @@ function Point() {
     import("../assets/css/point.css");
   }
 
+  const navigate = useNavigate();
   const [vouchers, setVouchers] = useState([]);
   const [points, setPoints] = useState(null);
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     fetchVouchers();
     userPoints();
+    refreshToken();
   }, []);
 
   const userPoints = async () => {
@@ -32,6 +36,32 @@ function Point() {
       setVouchers(response.data);
     } catch (error) {
       console.error("Error fetching vouchers:", error);
+    }
+  };
+
+  const refreshToken = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/token");
+      setToken(response.data.accessToken);
+      const decoded = jwtDecode(response.data.accessToken);
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        console.log("Unauthorized");
+        Swal.fire({
+          title: "HARUS LOGIN",
+          text: "Silahkan login terlebih dahulu agar dapat mengakses halaman ini",
+          icon: "error",
+          showCancelButton: false,
+          showConfirmButton: true,
+          allowOutsideClick: false,
+          confirmButtonText: "Login",
+          preConfirm: () => {
+            navigate("/login");
+          },
+        });
+      } else {
+        console.log(error);
+      }
     }
   };
 
@@ -103,8 +133,7 @@ function Point() {
           background:
             "linear-gradient(357deg, rgba(255,255,255,1) 0%, rgba(220,255,219,1) 100%)",
           marginTop: "-80px",
-        }}
-      >
+        }}>
         <div
           className="presentase"
           style={{
@@ -118,8 +147,7 @@ function Point() {
             marginLeft: "250px",
             marginRight: "250px",
             marginTop: "15px",
-          }}
-        >
+          }}>
           <div>
             <div className="skill">
               <div className="box">
@@ -134,7 +162,7 @@ function Point() {
             <button
               className="text-center bi bi-arrow btn btn-warning"
               style={{ color: "black", fontSize: "16px" }}
-            >
+              onClick={() => (window.location.href = "/exchange-status")}>
               Riwayat
             </button>
           </div>
@@ -152,8 +180,7 @@ function Point() {
                   className="voucher-code"
                   onClick={() =>
                     exchangePoint(voucher.id, voucher.point_voucher)
-                  }
-                >
+                  }>
                   Tukar {voucher.point_voucher} point
                 </button>
               </div>

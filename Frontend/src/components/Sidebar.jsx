@@ -1,11 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import toastr from "toastr";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import "../assets/css/light.css";
 import "../assets/css/dashboard.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
+  const navigate = useNavigate();
   const [active, setActive] = useState(1);
+  const [username, setUsername] = useState('');
+  const [token, setToken] = useState("");
+  const [role, setRole] = useState("");
+
+  useEffect(() => {
+    refreshToken();
+    userRole();
+  }, []);
+
+  const refreshToken = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/token");
+      setToken(response.data.accessToken);
+      const decoded = jwtDecode(response.data.accessToken);
+      setUsername(decoded.username);
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        navigate('/login');
+
+        toastr.error('Anda harus login terlebih dahulu untuk mengakses dashboard tersebut');
+      } else {
+        console.log(error);
+      }
+    }
+  };
+
+  const userRole = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/user-role");
+      setRole(response.data.role);
+      if (response.data.role !== 'admin') {
+        navigate('/');
+        toastr.error("You don't have authorization to access this page");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleLogout = async (req, res, next) => {
+    try {
+      const response = await axios.delete("http://localhost:8000/logout");
+      navigate("/login");
+
+      toastr.success("Successfully logged out");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   return (
     <div className="sidebar d-flex justify-content-between flex-column py-3 ps-3 pe-4 vh-100">
@@ -70,17 +125,6 @@ function Sidebar() {
             <Link to="/messages" className="p-1 text-white">
               <i className="bi bi-chat-left me-3 fs-8"></i>
               <span className="fs-8">Messages</span>
-            </Link>
-          </li>
-          <li
-            className={
-              active === 5 ? "active nav-item p-2 m-1" : "nav-item p-2 m-1"
-            }
-            onClick={(e) => setActive(5)}
-          >
-            <Link to="/settings" className="p-1 text-white">
-              <i className="bi bi-gear me-3 fs-8"></i>
-              <span className="fs-8">Settings</span>
             </Link>
           </li>
         </ul>

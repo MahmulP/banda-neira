@@ -4,17 +4,23 @@ import jwt from "jsonwebtoken";
 
 export const getUsers = async (req, res) => {
   try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(401);
+
     const users = await Users.findAll({
-      attributes: ["id", "username", "email", "points"],
+      attributes: ["id", "username", "email", "points", "role", "phone"],
     });
     res.json(users);
+
   } catch (error) {
     console.log(error);
+    res.status(500).send("Internal Server Error");
   }
 };
 
 export const Register = async (req, res) => {
   const { username, email, password, phone } = req.body;
+  const role = "user";
   if (!email || !password)
     return res.status(400).json({ msg: "Email dan password harus diisi." });
   const salt = await bcrypt.genSalt();
@@ -25,6 +31,7 @@ export const Register = async (req, res) => {
       email: email,
       password: hashPassword,
       phone: phone,
+      role: role,
     });
     res.json({ msg: "Pendaftaran berhasil" });
   } catch (error) {
@@ -81,42 +88,103 @@ export const Logout = async (req, res) => {
   if (!refreshToken) return res.sendStatus(204);
   const user = await Users.findAll({
     where: {
-      refresh_token: refreshToken
-    }
+      refresh_token: refreshToken,
+    },
   });
   if (!user[0]) return res.sendStatus(204);
   const userId = user[0].id;
-  await Users.update({refresh_token: null}, {
-    where:{
-        id: userId
+  await Users.update(
+    { refresh_token: null },
+    {
+      where: {
+        id: userId,
+      },
     }
-  })
-  res.clearCookie('refreshToken');
+  );
+  res.clearCookie("refreshToken");
   return res.sendStatus(200);
 };
 
-
 export const getPoint = async (req, res) => {
   try {
-      const refreshToken = req.cookies.refreshToken;
-      if (!refreshToken) return res.sendStatus(401);
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(401);
 
-      const users = await Users.findAll({
-          where: {
-              refresh_token: refreshToken
-          }
-      });
+    const users = await Users.findAll({
+      where: {
+        refresh_token: refreshToken,
+      },
+    });
 
-      if (!users[0]) return res.sendStatus(404);
+    if (!users[0]) return res.sendStatus(404);
 
-      const userPoint = users[0].points;
+    const userPoint = users[0].points;
 
-      if (!userPoint) return res.sendStatus(404);
+    if (!userPoint) return res.sendStatus(404);
 
-      res.json({ userPoint });
+    res.json({ userPoint });
   } catch (error) {
-      console.log(error);
-      res.status(500).send('Internal Server Error');
+    console.log(error);
+    res.status(500).send("Internal Server Error");
   }
 };
 
+export const getRole = async (req, res) => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(401);
+
+    const users = await Users.findAll({
+      where: {
+        refresh_token: refreshToken,
+      },
+    });
+
+    if (!users[0]) return res.sendStatus(404);
+
+    const role = users[0].role;
+
+    if (!role) return res.sendStatus(404);
+
+    res.json({ role });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+export const changeRole = async (req, res) => {
+  const usersId = req.body.userId;
+  const users = await Users.findAll({
+    where: {
+      id: usersId,
+    }
+  })
+
+  if (!users || users.length === 0) {
+    return res.sendStatus(401);
+  }
+
+  const userId = users[0].id;
+  const userRole = users[0].role;
+
+  try {
+    if (userRole == 'admin') {
+      await Users.update(
+        { role: 'user' },
+        { where: { id: userId } }
+      );
+    } else {
+      await Users.update(
+        { role: 'admin' },
+        { where: { id: userId } }
+      )
+    }
+
+    res.status(200).json({
+      message: "Role has been updated successfully",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

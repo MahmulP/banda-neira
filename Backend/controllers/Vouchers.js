@@ -11,6 +11,25 @@ export const getVouchers = async (req, res) => {
   }
 };
 
+export const getVouchersExchange = async (req, res) => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(401);
+
+    const vouchersExchange = await VoucherExchange.findAll({
+      include: [
+        { model: Users, as: "user", attributes: ["id", "username"] },
+        { model: Vouchers, as: "voucher", attributes: ["id", "jenis_voucher"] },
+      ],
+    });
+
+    res.json(vouchersExchange);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 export const exchangeVoucher = async (req, res) => {
   const refreshToken = req.cookies.refreshToken;
   if (!refreshToken) return res.sendStatus(401);
@@ -63,6 +82,70 @@ export const exchangeVoucher = async (req, res) => {
     res.status(500).json({
       message: "Internal Server Error",
     });
+  }
+};
+
+export const voucherRedeem = async (req, res) => {
+  const vouchersId = req.body.voucherId;
+  const redeem = req.body.redeem;
+  const vouchers = await VoucherExchange.findAll({
+    where: {
+      id: vouchersId,
+    },
+  });
+
+  if (!vouchers || vouchers.length === 0) {
+    return res.sendStatus(401);
+  }
+
+  const voucherId = vouchers[0].id;
+
+  try {
+      await VoucherExchange.update({ redeem_voucher: redeem, status: 1 }, { where: { id: voucherId } });
+
+    res.status(200).json({
+      message: "Voucher has been updated",
+    });
+    console.log('test doang mah');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserExchange = async (req, res) => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+
+    if (!refreshToken) {
+      return res.sendStatus(401);
+    }
+
+    const users = await Users.findAll({
+      where: {
+        refresh_token: refreshToken,
+      },
+    });
+
+    if (!users || users.length === 0) {
+      return res.sendStatus(401);
+    }
+
+    const userId = users[0].id;
+
+    const vouchersExchange = await VoucherExchange.findAll({
+      where: {
+        id_user: userId,
+      },
+      include: [
+        { model: Users, as: "user", attributes: ["id", "username"] },
+        { model: Vouchers, as: "voucher", attributes: ["id", "jenis_voucher"] },
+      ],
+    });
+
+    res.json(vouchersExchange);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
 };
 

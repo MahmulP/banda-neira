@@ -2,10 +2,15 @@ import Contacts from "../models/ContactModel.js";
 
 export const getContacts = async (req, res) => {
   try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(401);
+
     const contacts = await Contacts.findAll();
     res.json(contacts);
+
   } catch (error) {
     console.log(error);
+    res.status(500).send("Internal Server Error");
   }
 };
 

@@ -1,5 +1,5 @@
 GET http://localhost:8000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoibWFobXVscCIsImVtYWlsIjoibWFobXVscHJhdGFtYTFAZ21haWwuY29tIiwiaWF0IjoxNzAyMjU0NDYwLCJleHAiOjE3MDIyNTQ1MDV9.FT2cfq1Q7sW0xbgV8RdqbO2WYiQA7puq16pnzFGbDak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsInVzZXJuYW1lIjoibWFobXVscCIsImVtYWlsIjoibWFobXVscHJhdGFtYTE2QGdtYWlsLmNvbSIsImlhdCI6MTcwMjkxMDM1NCwiZXhwIjoxNzAyOTEwMzk5fQ.bIGHZWQtvdjx0k6OMJTiX8_-67Q2xukcJkVodYaL5D4
 
 ###
 
@@ -41,11 +41,25 @@ GET http://localhost:8000/vouchers
 
 ###
 
+GET http://localhost:8000/voucher-exchange
+
+
+###
+
 POST http://localhost:8000/exchange-voucher
 Content-Type: application/json
 
 {
     "voucherId": 3
+}
+
+###
+
+POST http://localhost:8000/change-role
+Content-Type: application/json
+
+{
+    "userId": 3
 }
 
 

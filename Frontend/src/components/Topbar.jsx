@@ -47,12 +47,6 @@ const Topbar = () => {
                 className="nav-item mx-1 rounded border"
                 style={{ textDecoration: "none" }}
               >
-                <a className="nav-link text-black">Account</a>
-              </li>
-              <li
-                className="nav-item mx-1 rounded border"
-                style={{ textDecoration: "none" }}
-              >
                 <a
                   className="nav-link text-black"
                   href="#"
