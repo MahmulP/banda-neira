@@ -1,0 +1,14 @@
+.sidebar ul li:hover {
+  background-color: #414449;
+  color: rgb(128, 129, 124);
+  cursor: pointer;
+}
+.sidebar ul li a {
+  text-decoration: none;
+}
+.active {
+  /* background-color: rgb(255, 255, 255); */
+  border: 5px;
+  color: rgb(228, 219, 219);
+  text-decoration: underline;
+}

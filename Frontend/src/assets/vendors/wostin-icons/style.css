@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'icomoon';
-  src: url('fonts/icomoon78ed.eot?orkqwr');
-  src: url('fonts/icomoon78ed.eot?orkqwr#iefix') format('embedded-opentype'),
-    url('fonts/icomoon78ed.ttf?orkqwr') format('truetype'),
-    url('fonts/icomoon78ed.woff?orkqwr') format('woff'),
-    url('fonts/icomoon78ed.svg?orkqwr#icomoon') format('svg');
+  font-family: "icomoon";
+  src: url("fonts/icomoon78ed.eot?orkqwr");
+  src: url("fonts/icomoon78ed.eot?orkqwr#iefix") format("embedded-opentype"),
+    url("fonts/icomoon78ed.ttf?orkqwr") format("truetype"),
+    url("fonts/icomoon78ed.woff?orkqwr") format("woff"),
+    url("fonts/icomoon78ed.svg?orkqwr#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -13,7 +13,7 @@
 [class^="icon-"],
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: "icomoon" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -25,13 +25,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-
-
-
-
-
-
 
 .icon-email:before {
   content: "\e900";
@@ -128,4 +121,7 @@
 }
 .icon-clock:before {
   content: "\e91f";
+}
+.icon-gear:before {
+  content: "\e91g";
 }

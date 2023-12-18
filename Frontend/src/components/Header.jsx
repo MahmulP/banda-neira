@@ -83,21 +83,24 @@ const Header = () => {
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                    aria-expanded="false"
+                  >
                     Informasi
                   </a>
                   <ul className="dropdown-menu">
                     <li className={current("/information")}>
                       <a
                         href="information"
-                        className={isActive("/information")}>
+                        className={isActive("/information")}
+                      >
                         Bank Sampah
                       </a>
                     </li>
                     <li className={current("/trash-selection")}>
                       <a
                         href="trash-selection"
-                        className={isActive("/trash-selection")}>
+                        className={isActive("/trash-selection")}
+                      >
                         Pemilihan Sampah
                       </a>
                     </li>
@@ -119,23 +122,30 @@ const Header = () => {
               <div className="main-menu-three__search-box">
                 {username ? (
                   <div className="dropdown">
-                    <a href=""
+                    <a
+                      href=""
                       className="text-black dropdown-toggle"
                       id="dropdownMenuLink"
                       data-bs-toggle="dropdown"
                       aria-haspopup="true"
-                      aria-expanded="false">
+                      aria-expanded="false"
+                    >
                       {username}
                     </a>
 
                     <div
                       className="dropdown-menu"
-                      aria-labelledby="dropdownMenuLink">
+                      aria-labelledby="dropdownMenuLink"
+                    >
                       <a
                         className="dropdown-item"
                         href="#"
-                        onClick={handleLogout}>
+                        onClick={handleLogout}
+                      >
                         Log Out
+                      </a>
+                      <a className="dropdown-item" href="/dashboard">
+                        Dashboard
                       </a>
                     </div>
                   </div>

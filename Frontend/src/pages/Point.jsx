@@ -103,7 +103,8 @@ function Point() {
           background:
             "linear-gradient(357deg, rgba(255,255,255,1) 0%, rgba(220,255,219,1) 100%)",
           marginTop: "-80px",
-        }}>
+        }}
+      >
         <div
           className="presentase"
           style={{
@@ -117,7 +118,8 @@ function Point() {
             marginLeft: "250px",
             marginRight: "250px",
             marginTop: "15px",
-          }}>
+          }}
+        >
           <div>
             <div className="skill">
               <div className="box">
@@ -129,6 +131,12 @@ function Point() {
             <p style={{ color: "black", fontSize: "18px" }}>
               Total Poin Anda: {points ? points : 0} Poin
             </p>
+            <button
+              className="text-center bi bi-arrow btn btn-warning"
+              style={{ color: "black", fontSize: "16px" }}
+            >
+              Riwayat
+            </button>
           </div>
         </div>
         <div className="container-voc">
@@ -144,7 +152,8 @@ function Point() {
                   className="voucher-code"
                   onClick={() =>
                     exchangePoint(voucher.id, voucher.point_voucher)
-                  }>
+                  }
+                >
                   Tukar {voucher.point_voucher} point
                 </button>
               </div>
