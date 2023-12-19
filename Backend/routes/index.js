@@ -1,5 +1,5 @@
 import express from "express";
-import { getUsers, getPoint, getRole, changeRole, Register, Login, Logout } from "../controllers/Users.js";
+import { getUsers, getPoint, getRole, changeRole, givePoint, Register, Login, Logout, getUsersPoint } from "../controllers/Users.js";
 import { exchangeVoucher, getVouchers, getVouchersExchange, getUserExchange, voucherRedeem } from "../controllers/Vouchers.js";
 import { getContacts, postMessage } from "../controllers/Contacts.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
@@ -15,6 +15,8 @@ router.delete("/logout", Logout);
 router.get("/user-point", getPoint);
 router.get("/user-role", getRole);
 router.post('/change-role', changeRole);
+router.post('/give-point', givePoint);
+router.get('/user-points', getUsersPoint);
 
 // VOUCHERS
 router.get("/vouchers", getVouchers);

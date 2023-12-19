@@ -33,6 +33,7 @@ import Messages from "./pages/Messages.jsx";
 import Settings from "./pages/Settings.jsx";
 import Voucher from "./pages/Voucher.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
+import UserPoint from "./pages/UserPoint.jsx";
 axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
     path: "reset-password",
     element: <ResetPassword />,
   },
+  {
+    path: "user-point",
+    element: <UserPoint />,
+  }
 ]);
 
 // Create a root for ReactDOM

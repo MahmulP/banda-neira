@@ -122,6 +122,17 @@ function Sidebar() {
             }
             onClick={(e) => setActive(4)}
           >
+            <Link to="/user-point" className="p-1 text-white">
+              <i className="bi bi-currency-dollar me-3 fs-8"></i>
+              <span className="fs-8">Point</span>
+            </Link>
+          </li>
+          <li
+            className={
+              active === 5 ? "active nav-item p-2 m-1" : "nav-item p-2 m-1"
+            }
+            onClick={(e) => setActive(5)}
+          >
             <Link to="/messages" className="p-1 text-white">
               <i className="bi bi-chat-left me-3 fs-8"></i>
               <span className="fs-8">Messages</span>

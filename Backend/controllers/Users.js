@@ -1,4 +1,5 @@
 import Users from "../models/UserModel.js";
+import Points from "../models/PointModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -169,6 +170,9 @@ export const changeRole = async (req, res) => {
   const userRole = users[0].role;
 
   try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(401);
+
     if (userRole == 'admin') {
       await Users.update(
         { role: 'user' },
@@ -186,5 +190,61 @@ export const changeRole = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const givePoint = async (req, res) => {
+  const usersId = req.body.userId;
+  const points = req.body.points;
+  const users = await Users.findAll({
+    where: {
+      id: usersId,
+    }
+  })
+
+  if (!users || users.length === 0) {
+    return res.sendStatus(401);
+  }
+
+  const userId = users[0].id;
+  const userPoints = users[0].points;
+
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(401);
+
+    await Users.update(
+      { points: userPoints + points },
+      { where: { id: userId } }
+    );
+
+    await Points.create({
+      id_user: userId,
+      total_point: points,
+    })
+
+    res.status(200).json({
+      message: "Point has been created successfully",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUsersPoint = async (req, res) => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(401);
+
+    const usersPoint = await Points.findAll({
+      include: [
+        { model: Users, as: "user", attributes: ["id", "username"] },
+      ],
+    });
+
+    res.json(usersPoint);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
   }
 };
