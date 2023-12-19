@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Des 2023 pada 18.35
+-- Waktu pembuatan: 19 Des 2023 pada 04.08
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.1.17
 
@@ -58,6 +58,31 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `subject`, `message`, `c
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `points`
+--
+
+CREATE TABLE `points` (
+  `id` int(11) NOT NULL,
+  `id_user` varchar(255) DEFAULT NULL,
+  `total_point` varchar(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `points`
+--
+
+INSERT INTO `points` (`id`, `id_user`, `total_point`, `createdAt`, `updatedAt`) VALUES
+(1, '3', '150', '2023-12-19 01:46:10', '2023-12-19 01:46:10'),
+(2, '3', '150', '2023-12-19 01:46:41', '2023-12-19 01:46:41'),
+(3, '4', '100', '2023-12-19 02:58:44', '2023-12-19 02:58:44'),
+(4, '10', '100', '2023-12-19 02:58:53', '2023-12-19 02:58:53'),
+(5, '10', '100', '2023-12-19 03:00:09', '2023-12-19 03:00:09');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
@@ -79,14 +104,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `role`, `password`, `phone`, `refresh_token`, `points`, `createdAt`, `updatedAt`) VALUES
-(3, 'mahmulp', 'mahmulpratama16@gmail.com', 'admin', '$2b$10$ZitZ42aKi9E7Jd/XUT626.qUAhFAVlQlAOf8BPB2/TqKTacXA3way', '081361626766', NULL, 120, '2023-12-09 16:02:57', '2023-12-18 17:18:21'),
-(4, 'mahmulp', 'mahmulpratama1@gmail.com', 'user', '$2b$10$DUq/1olo3jZwkLWZT8NQ7.BgDVEEtignA7AbPi0D6ONcyxzFJ0yBa', '081361626766', NULL, NULL, '2023-12-09 16:19:12', '2023-12-18 17:20:07'),
+(3, 'mahmulp', 'mahmulpratama16@gmail.com', 'admin', '$2b$10$ZitZ42aKi9E7Jd/XUT626.qUAhFAVlQlAOf8BPB2/TqKTacXA3way', '081361626766', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsInVzZXJuYW1lIjoibWFobXVscCIsImVtYWlsIjoibWFobXVscHJhdGFtYTE2QGdtYWlsLmNvbSIsImlhdCI6MTcwMjk0OTA4NCwiZXhwIjoxNzAzMDM1NDg0fQ.AcdSdfpEoR7sNQhL6TIrs8uc-020M0HMILkPD2Yvcs8', 420, '2023-12-09 16:02:57', '2023-12-19 01:46:39'),
+(4, 'mahmulp', 'mahmulpratama1@gmail.com', 'user', '$2b$10$DUq/1olo3jZwkLWZT8NQ7.BgDVEEtignA7AbPi0D6ONcyxzFJ0yBa', '081361626766', NULL, 0, '2023-12-09 16:19:12', '2023-12-19 02:58:43'),
 (5, 'ucokbb', 'mahmulcok@gmail.com', NULL, '$2b$10$0gq2ScKI6suoRTNRTDQWhOnkBhc6cA.nSyKPdssPajcIn6GWeQu1S', '098521571', NULL, NULL, '2023-12-09 17:00:48', '2023-12-09 17:00:48'),
 (6, 'testlagi', 'mahmulpratama22@gmail.com', NULL, '$2b$10$6W.rdCvXznba5HEGmnOih.vqL7.Re0rUQUs2HZtmgFPl94yBYIMKe', '0852715219', NULL, NULL, '2023-12-09 17:04:07', '2023-12-09 17:04:07'),
 (7, 'test', 'test@gmail.com', NULL, '$2b$10$DH2jv3RuCOWq8j9/J0h6eOQmVBIZfO6mdQn0OvDLRUacVugLZOEt2', NULL, NULL, NULL, '2023-12-10 01:00:22', '2023-12-10 01:00:22'),
 (8, '', 'mahmulptamtayma@gmail.com', NULL, '$2b$10$Jp2eMuzQ600NKsXs2C1gfu8.weuLrn9kxrp3JaCbfe5TSsd5BEVPW', '', NULL, NULL, '2023-12-10 14:43:44', '2023-12-10 14:43:44'),
 (9, 'testdoanginimah', 'moaskgagkak@gmail.com', NULL, '$2b$10$zsZedyVaEKh4xHMS5WErDeJ8mSiXNFCF0rwnRSjrSpoGAnEQ3GK3y', '95271571', NULL, NULL, '2023-12-10 14:46:53', '2023-12-10 14:46:53'),
-(10, 'testusername', 'testusername@gmail.com', NULL, '$2b$10$V1ZCEExzmfuOFvbwml7e5uKWClC22iEnz/kjMXYduzj9Y52zjee.W', '085217518', NULL, NULL, '2023-12-11 14:53:51', '2023-12-11 14:53:51'),
+(10, 'testusername', 'testusername@gmail.com', NULL, '$2b$10$V1ZCEExzmfuOFvbwml7e5uKWClC22iEnz/kjMXYduzj9Y52zjee.W', '085217518', NULL, 100, '2023-12-11 14:53:51', '2023-12-19 03:00:09'),
 (11, 'mahmulp', 'mahmulpratama1@gmail.com', NULL, '$2b$10$/wKv9Z7QV.4tKE159cmSrelvywOsA0ILlpzDoE4G8QnqokfXycOtm', '081361626766', NULL, NULL, '2023-12-12 03:53:09', '2023-12-12 03:53:09'),
 (12, 'mahmulp', 'mahmulpratama0@gmail.com', NULL, '$2b$10$QRPIAZdJ2HlJn03AxnJfKexh074lTas9/2g/a9dNZYF1iE4WJpfve', '081361626766', NULL, NULL, '2023-12-12 03:53:17', '2023-12-12 03:58:15'),
 (16, 'testrole', 'role@gmail.com', 'user', '$2b$10$ck/zwbIt86mbS9ezDGGbk.etH27PpzHsklsOdAKG3exozw26VAlJe', '085219519', NULL, NULL, '2023-12-18 14:25:31', '2023-12-18 14:25:31');
@@ -175,6 +200,12 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `points`
+--
+ALTER TABLE `points`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
@@ -201,6 +232,12 @@ ALTER TABLE `vouchers_exchange`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `points`
+--
+ALTER TABLE `points`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
